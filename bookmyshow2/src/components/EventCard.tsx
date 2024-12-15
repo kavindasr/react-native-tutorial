@@ -21,7 +21,7 @@ const EventCard = ({ name, date, image, price, incrementItemsSelected }: EventCa
   const handleAddToCart = () => {
     // TODO: Implement cart functionality
     console.log('Added to cart:', name);
-    incrementItemsSelected((prev: number) => prev + 1);
+    incrementItemsSelected();
   };
 
   return (

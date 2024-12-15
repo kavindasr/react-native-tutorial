@@ -4,11 +4,11 @@ import EventCard, { EventCardType } from '../components/EventCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Feather } from '@expo/vector-icons';
+import { useCartStore } from '../store';
 
 const Home = () => {
-
   const [events, setEvents] = useState<EventCardType[]>([]);
-  const [itemsSelected, setItemsSelected] = useState<number>(0);
+  const { itemsSelected } = useCartStore();
 
   const fetchEvents = async () => {
     try {
@@ -49,7 +49,7 @@ const Home = () => {
             date={event.date}
             image={event.image}
             price={event.price}
-            incrementItemsSelected={setItemsSelected}
+            incrementItemsSelected={useCartStore.getState().incrementItems}
           />
         ))}
       </ScrollView>
