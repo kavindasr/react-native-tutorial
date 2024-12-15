@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet,
   Text,
@@ -7,13 +8,24 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../App";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
   const handleLogin = () => {
     console.log("Login attempted with:", email, password);
+    if (email === "harini@gmail.com" && password === "password") {
+        console.log("Login successful");
+        // Navigate to the home page
+        navigation.navigate("Home");
+    } else {
+        console.log("Login failed");
+    }
   };
 
   return (
